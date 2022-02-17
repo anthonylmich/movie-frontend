@@ -10,12 +10,15 @@ export default {
   methods: {
     createMovie: function () {
       axios.post("/movies", this.newMovieParams).then((response) => {
-        console.log("New Movie:", response.data);
-        localStorage.setItem("flashMessage", "Movie successfully created!");
-        this.$router.push("/movies");
-      });
-    }
-  }
+          console.log("New Movie:", response.data);
+          localStorage.setItem("flashMessage", "Movie successfully created!");
+          this.$router.push("/movies");
+        })
+        .catch((error) => {
+          this.errors = error.response.data;
+        });
+    },
+  },
 };
 </script>
 

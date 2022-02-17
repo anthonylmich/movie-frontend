@@ -1,9 +1,10 @@
 <script>
 import axios from "axios";
+
 export default {
   data: function () {
     return {
-      movie: {}
+      movie: {},
     };
   },
   created: function () {
@@ -12,32 +13,21 @@ export default {
       this.movie = response.data;
     });
   },
-  methods: {
-    destroyMovie: function () {
-      if (confirm("Are you sure you to delete this?")) {
-        axios.delete(`/movies/${this.movie.id}`).then((response) => {
-          console.log("Success", response.data);
-          this.$router.push("/movies");
-        });
-      }
-    },
-  },
+  methods: {},
 };
 </script>
 
 <template>
-  <div class="movies-show">
+  <div class="movies-index">
     <h2>{{ movie.title }}</h2>
     <img v-bind:src="movie.image_url" alt="" />
-    <p>Ingredients: {{ movie.ingredients }}</p>
-    <p>Directions: {{ movie.directions }}</p>
-    <p>Prep time: {{ movie.friendly_prep_time }}</p>
+    <p>Plot: {{ movie.plot }}</p>
+    <p>Year: {{ movie.year }}</p>
+    <p>Director: {{ movie.director }}</p>
     <div v-if="movie.owner">
       <button>
         <router-link v-bind:to="`/movies/${movie.id}/edit`">Edit</router-link>
       </button>
-      |
-      <button v-on:click="destroyMovie()">Delete</button>
     </div>
   </div>
 </template>
