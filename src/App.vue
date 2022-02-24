@@ -13,19 +13,43 @@ export default {
 };
 </script>
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link v-if="!isLoggedIn" to="/signup">Signup</router-link> |
-    <router-link v-if="!isLoggedIn" to="/login">Login</router-link> |
-    <router-link  to="/logout">Logout</router-link> |
-    <router-link to="/movies">Movies</router-link> |
-    <router-link v-if="isLoggedIn" to="/movies/new">New Movie</router-link> |
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <router-link class="navbar-brand" to="/">Home</router-link>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav">
+          <router-link class="nav-link" to="/movies">Movies</router-link>
+          <router-link v-if="!isLoggedIn" class="nav-link" to="/signup"
+            >Signup</router-link
+          >
+          <router-link v-if="!isLoggedIn" class="nav-link" to="/login"
+            >Login</router-link
+          >
+          <router-link v-if="isLoggedIn" class="nav-link" to="/movies/new"
+            >New Movie</router-link
+          >
+          <router-link v-if="isLoggedIn" class="nav-link" to="/logout"
+            >Logout</router-link
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
   <router-view />
 </template>
 
-<style>
+<!-- <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,4 +70,4 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-</style>
+</style> -->

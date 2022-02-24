@@ -24,7 +24,31 @@ export default {
 </script>
 
 <template>
-  <div class="movies-index">
+  <div class="container">
+    <p>search: <input type="text" v-model="search" list="movieTitles" /></p>
+
+    <datalist id="movieTitles">
+      <option v-for="movie in movies" v-bind:key="movie.id">
+        {{ movie.title }}
+      </option>
+    </datalist>
+    <div v-for="movie in filterMovies()" v-bind:key="movie.id">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">
+              {{ movie.plot }}
+            </p>
+            <a href="#" to="/movies/{{ movie.id }}" class="btn btn-primary"
+              >View Movie</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="movies-index">
     <h1>message</h1>
     <p>search: <input type="text" v-model="search" list="movieTitles" /></p>
     <datalist id="movieTitles">
@@ -41,5 +65,5 @@ export default {
       <p>Plot: {{ movie.plot }}</p>
       <p>Director: {{ movie.director }}</p>
     </div>
-  </div>
+  </div> -->
 </template>

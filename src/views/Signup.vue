@@ -43,14 +43,28 @@ export default {
       <div>
         <label>Password:</label>
         <input type="password" v-model="newUserParams.password" /><br />
-        <small class="Issues" v-if="newUserParams.password.length < 8">must be at least 8 characters long</small>
-        <small class="Issues" v-if="newUserParams.password.length > 20"> Cannot be longer than 20 characters</small>
+        <small class="Issues" v-if="newUserParams.password.length < 8"
+          >must be at least 8 characters long</small
+        >
+        <small class="Issues" v-if="newUserParams.password.length > 20">
+          Cannot be longer than 20 characters</small
+        >
       </div>
       <div>
         <label>Password confirmation:</label>
-        <input type="password" v-model="newUserParams.password_confirmation" /><br />
-        <small class="issues" v-if="newUserParams.password !== newUserParams.password_confirmation && newUserParams.password.length > 0">
-        Password confirmation must match password</small>
+        <input
+          type="password"
+          v-model="newUserParams.password_confirmation"
+        /><br />
+        <small
+          class="issues"
+          v-if="
+            newUserParams.password !== newUserParams.password_confirmation &&
+            newUserParams.password.length > 0
+          "
+        >
+          Password confirmation must match password</small
+        >
       </div>
       <input type="submit" value="Submit" />
     </form>
