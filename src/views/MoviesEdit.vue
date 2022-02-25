@@ -58,3 +58,7 @@ export default {
     </form>
   </div>
 </template>
+
+code . git add --all git commit -m "adds better navbar and better index, new
+page style/pages. Also in the movies index adds a better search bar, and more
+organized layout."
